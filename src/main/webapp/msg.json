@@ -1,0 +1,11 @@
+[
+    {"name": "peter","roomNum": 100,"deposit": 200,"dt": "2017-4-29","phoneNum": 123},
+    {"name": "kate","roomNum": 100,"deposit": 200,"dt": "2017-4-29","phoneNum": 123},
+    {"name": "nick","roomNum": 100,"deposit": 200,"dt": "2017-4-29","phoneNum": 123},
+    {"name": "james","roomNum": 100,"deposit": 200,"dt": "2017-4-29","phoneNum": 123},
+    {"name": "kobe","roomNum": 100,"deposit": 200,"dt": "2017-4-29","phoneNum": 123},
+    {"name": "jimmy","roomNum": 100,"deposit": 200,"dt": "2017-4-29","phoneNum": 123},
+    {"name": "jam","roomNum": 100,"deposit": 200,"dt": "2017-4-29","phoneNum": 123},
+    {"name": "sam","roomNum": 190,"deposit": 200,"dt": "2017-4-29","phoneNum": 123}
+     
+]

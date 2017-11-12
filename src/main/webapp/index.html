@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>酒店信息管理系统</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/checkIn.css">
+	<link rel="stylesheet" type="text/css" href="css/checkOut.css">
+	<link rel="stylesheet" type="text/css" href="css/book.css">
+
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body ng-app="myapp" ng-controller="indexCtrl" data-ng-init="showName()">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapse">
+					<span class="sr-only">Toggle navigation</span>
+					<!-- <span class="glyphicon  glyphicon-menu-down"></span>
+				-->
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#/main" class="navbar-brand">酒店信息管理系统</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="nav navbar-nav">
+				<li class="active" >
+					<a href="#/main">首页</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						功能
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#/checkIn">入住登记</a>
+						</li>
+						<li>
+							<a href="#/checkOut">退房管理</a>
+						</li>
+						<li>
+							<a href="#/checkOut">换房处理</a>
+						</li>
+						<li>
+							<a href="#/book">客房预订</a>
+						</li>
+						<li>
+							<a href="#/order">订单管理</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#/customerMsg">客户信息管理</a>
+						</li>
+						<li>
+							<a href="#/roomMsg">房间信息查询</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" ng-click="open()">关于</a>
+				</li>
+			</ul>
+			<!-- <form class="navbar-form navbar-right">
+			<div class="form-group">
+				<input type="text" name="" value="" class="form-control" placeholder="用户名..">
+				<input type="text" name="" value="" class="form-control" placeholder="密码.."></div>
+			<button type="submit" class="btn btn-default">登录</button>
+		</form>
+		-->
+		<div class="navbar-right">
+			<li class="dropdown current-user">
+				<a href="" title="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<img src="pic/admin.jpg" alt="">
+					<span class="username">
+						{{managerName}}
+					<span class="caret"></span>
+				</span>
+			</a>
+			<ul class="dropdown-menu dropdown-dark">
+				<li>
+					<a href="" title="">资料管理</a>
+					<a href="login.html" title="">退出登录</a>
+				</li>
+			</ul>
+		</li>
+	</div>
+</div>
+</div>
+</nav>
+<div class="container-fluid">
+<div class="row">
+<!-- 左列导航栏 -->
+<div class="col-md-2 sidebar">
+
+	<ul class="nav" id="active">
+		<li class="active" onclick="highlight(this)">
+			<a href="#/main">首页</a>
+		</li>
+	</ul>
+	<ul class="nav">
+		<li onclick="highlight(this)">
+			<a href="#/checkIn" >入住登记</a>
+		</li>
+		<li onclick="highlight(this)">
+			<a href="#/checkOut">退房管理</a>
+		</li>
+		<li onclick="highlight(this)">
+			<a href="#/checkOut">换房处理</a>
+		</li>
+		<li onclick="highlight(this)">
+			<a href="#/book">客房预订</a>
+		</li>
+		<li onclick="highlight(this)">
+			<a href="#/order">订单管理</a>
+		</li>
+		<li onclick="highlight(this)">
+			<a href="#/checkOut" >客户评价</a>
+		</li>
+	</ul>
+	<ul class="nav">
+		<li onclick="highlight(this)">
+			<a href="#/customerMsg">客户信息管理</a>
+		</li>
+		<li onclick="highlight(this)">
+			<a href="#/roomMsg">房间信息查询</a>
+		</li>
+		<li onclick="highlight(this)" ng-click="open()">
+			<a href="">关于</a>
+		</li>
+	</ul>
+
+</div>
+<!-- 右列管理控制台 -->
+<div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2" ng-view>
+
+	<div class="control-header">
+		<h3>管理控制台</h3>
+		<hr>
+		<button type="button" class="btn btn-default">操作1</button>
+		<button type="button" class="btn btn-primary">操作2</button>
+		<button type="button" class="btn btn-success">操作3</button>
+		<button type="button" class="btn btn-info">操作4</button>
+		<button type="button" class="btn btn-warning">操作5</button>
+		<button type="button" class="btn btn-danger">操作6</button>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-md-6 ">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<!-- <h5>最新提醒</h5>
+				-->
+							最新提醒
+			</div>
+			<div class="panel-body">
+				<div class="alert alert-success" role="alert"> <strong>提示</strong>
+					您的订单（2014001）已经审核通过！
+				</div>
+				<div class="alert alert-danger" role="alert"> <strong>提示</strong>
+					您的订单（2014002）被打回！
+				</div>
+				<div class="alert alert-warning" role="alert">
+					<strong>提示</strong>
+					您的订单（2014003）客户付款延迟！
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-primary order-table">
+			<div class="panel-heading">最新订单</div>
+			<div class="panel-body table-responsive ">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>产品</th>
+							<th>数量</th>
+							<th>总金额</th>
+							<th>业务员</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Apple Macbook air</td>
+							<td>10</td>
+							<td>80000</td>
+							<td>王小贱</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Apple iPad air</td>
+							<td>20</td>
+							<td>65000</td>
+							<td>尹开花</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Apple Macbook Pro</td>
+							<td>5</td>
+							<td>50000</td>
+							<td>刘老根</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<button type="button" class="btn btn-primary search">查看明细>></button>
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-6 ">
+		<div class="panel panel-primary">
+			<div class="panel-heading">我的任务</div>
+			<div class="panel-body">
+				<div class="alert alert-info" role="alert">
+					订单审批
+					<span class="badge pull-right">42</span>
+				</div>
+				<div class="alert alert-info" role="alert">
+					收款确认
+					<span class="badge pull-right">20</span>
+				</div>
+				<div class="alert alert-info" role="alert">
+					付款确认
+					<span class="badge pull-right">10</span>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-primary work-progress">
+			<div class="panel-heading">工程进度</div>
+			<div class="panel-body">
+				<span class="label label-primary">水井挖掘工程</span>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width:60%"></div>
+				</div>
+				<span class="label label-danger">基建工程</span>
+				<div class="progress">
+					<div class="progress-bar progress-bar-danger" role="progressbar" style="width:80%"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript" src=" http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js
+"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script> -->
+<script type="text/javascript" src="./js/lib/angular.js"></script>
+<script type="text/javascript" src="js/lib/angular-animate.js"></script>
+<script type="text/javascript" src="js/lib/ui-bootstrap-tpls.js"></script>
+<!-- <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script> -->
+<script type="text/javascript" src="js/lib/angular-route.js"></script>
+<script type="text/javascript" src="./js/controllers/checkInCtrl.js"></script>
+<script type="text/javascript" src="./js/controllers/checkOutCtrl.js"></script>
+<script type="text/javascript" src="./js/controllers/bookCtrl.js"></script>
+<script type="text/javascript" src="./js/controllers/orderCtrl.js"></script>
+<script type="text/javascript" src="./js/controllers/customerMsgCtrl.js"></script>
+<script type="text/javascript" src="./js/controllers/roomMsgCtrl.js"></script>
+<script type="text/javascript">
+  //原生js控制点击列表高亮
+  var lastClick = document.querySelector('#active .active');
+  function highlight(obj) {
+  	if(lastClick != null) {
+  		lastClick.setAttribute('class','');
+  	}
+  	lastClick = obj;
+  	console.log(obj);
+  	obj.setAttribute('class','active');
+  }
+  //angular模块
+   angular.module('myapp',['ngRoute','datePicker','ui.bootstrap.demo','book','order','customerMsg','roomMsg','ngAnimate', 'ui.bootstrap'])
+		  .controller('indexCtrl',function($scope, $uibModal, $http) {
+			 $scope.managerName;//管理员姓名
+		  	 $scope.animationsEnabled = true;
+		     $scope.open = function() {
+               var modalInstance = $uibModal.open({
+               animation: $scope.animationsEnabled,
+               ariaLabelledBy: 'modal-title',
+               ariaDescribedBy: 'modal-body',
+               templateUrl: 'myModalContent4.html',
+               controller: 'ModalInstanceCtrl4'
+               // size: size,      
+              });
+             }
+		     $scope.showName = function() {
+		    	 $http({
+		    		 method: 'GET',
+		    	  		url: 'login/isLogin.do'
+		    	 }).success(function(res) {
+		    		 if(res.success) {
+		    			 $scope.managerName = res.result[0].user;
+		    			 console.log(res);
+		    		 }
+		    	 })
+		     }
+		   })
+           .config(['$routeProvider', function($routeProvider) { 
+           	 $routeProvider.when('/checkIn', {
+           		templateUrl: 'views/checkIn.html',
+           		controller: 'DatepickerPopupDemoCtrl',
+           		// template: '<div style="background-color: pink;height: 500px;width: 500px;">hieverybody{{val}}</div>'
+           		// controller:  'checkInCtrl'
+           	}).when('/checkOut', {
+           		templateUrl: 'views/checkOut.html',
+           		// template: '<div style="background-color: red;height: 900px;width: 900px;">{{val}}hoho1 {{val}}</div>' + '<input ng-model="val">',
+           		controller: 'ModalDemoCtrl',
+           		/**
+           		 * resolve属性里的值会在路由成功前被预先设定好，然后注入到控制器中。此处$http()方法会返回一个promise对象,而messages属性获取的是promise对象中的value属性，该属性也是一个对象，含有data,status,config,statusText等属性，data属性保存的是后端返回的json数据。而messages属性是可以注入到对应的controller中，例如此处是ModalDemoCtrl。
+           		 */	
+           		resolve: {
+           			messages: function($http) {
+           				return $http({
+           					method: 'GET',
+           					url: 'checkOut/getCheckOutMsg.do'
+           				});
+           			}
+           		}
+           	}).when('/book', {
+           		templateUrl: 'views/book.html',
+           		controller: 'bookCtrl'
+           	}).when('/order', {
+           		templateUrl: 'views/order.html',
+           		controller: 'orderCtrl',
+           		resolve: {
+           			orders: function($http) {
+           				return $http({
+           					method: 'GET',
+           					url: 'order/getOrder.do'
+           				});
+           			}
+           		}
+           	}).when('/customerMsg', {
+           		templateUrl: 'views/customerMsg.html',
+           		controller: 'customerMsgCtrl',
+           		resolve: {
+           			customerMsgs: function($http) {
+           				return $http({
+           					method: 'GET',
+           					url: 'checkin/searchCmsg.do'
+           				});
+           			}
+           		}
+           	}).when('/roomMsg', {
+           		templateUrl: 'views/roomMsg.html',
+           		controller: 'roomMsgCtrl',
+           		resolve: {
+           			roomMsgs: function($http) {
+           				return $http({
+           					method: 'GET',
+           					url: 'room/search.do'
+           				});
+           			}
+           		}
+
+           	}).when('/main', {
+           		templateUrl: 'views/main.html',
+           	});
+         }]);
+angular.module('myapp')
+       .controller('ModalInstanceCtrl4', function($scope, $uibModalInstance) {
+          $scope.ok = function () {
+            $uibModalInstance.close();
+          };
+          $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+          };
+});
+</script>
+<script type="text/ng-template" id="myModalContent4.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">关于我们</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+        	<p>酒店位于北京贸易及文化活动枢纽的建国门，共24层，拥有500间客房，普标32平方米。国际五星级长富宫饭店1989年开业，1999年重新装修，提供优质服务和一应俱全的设施，包括游泳池。将为您带来超凡舒畅享受，登临高处，更可欣赏古都美景；踏上大理石台阶，举目便是以柔和、四周装着古雅中国艺术品的大堂，服务员彬彬有礼，带着温暖的微笑盛意相迎，秉承“竭诚奉献”的优秀传统，悉心呈献，让您感受无可比似的个人细致服务。</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">Ok</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</body>
+</html>

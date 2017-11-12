@@ -1,0 +1,43 @@
+
+<div class="panel panel-primary" id="checkOut">
+  <div class="panel-heading">
+    <h2 class="panel-title">剩余客房信息查询</h2>
+  </div>
+  <div class="panel-body">
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+          <td>房间号</td>
+          <td>房间种类</td>
+          <td>是否空房</td>
+          <td>是否被预订</td>
+        </tr>
+    </thead>
+<tbody>
+      <tr ng-repeat="item in roomMsgs track by $index" >
+        <td>{{item.roomNum}}</td>
+        <td>{{item.type}}</td>
+        <td>{{item.isEmpty > 0 ? '否' : '是'}}</td>
+        <td>{{item.isOrder > 0 ? '是' : '否'}}</td>
+     </tr>   
+</tbody>
+</table>
+</div>
+<div class="panel-footer">
+<div class="row">
+<div class="col-md-6">
+  <div class="">
+  <form action="" class="form-inline">
+      <div class="form-group">
+            <label for="type">房间种类：</label>
+            <select class="form-control" id="type" ng-model="selectedType" ng-options="x for x in types" ng-change="change()">
+            </select>
+          </div>
+  </form>
+  
+  </div>
+</div>
+</div>
+
+</div>
+</div>

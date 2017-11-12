@@ -1,0 +1,7 @@
+[
+	{"roomNum": 100, "type": "单人房"},
+	{"roomNum": 101, "type": "单人房"},
+	{"roomNum": 102, "type": "单人房"},
+	{"roomNum": 110, "type": "双人房"},
+	{"roomNum": 111, "type": "双人房"}
+]

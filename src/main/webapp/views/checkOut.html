@@ -1,0 +1,115 @@
+<div class="panel panel-primary" id="checkOut" data-ng-init="load2()">
+       <div class="panel-heading"> 
+      <h2 class="panel-title">退换登记处理</h2> 
+     </div>
+     <div class="panel-body">
+       <table class="table table-striped table-hover table-bordered"> 
+        <thead> 
+         <tr>
+          <td>客户姓名</td> 
+          <td>房间号</td>
+          <td>房间押金</td> 
+          <td>入住时间</td> 
+          <td>电话号码</td>
+          <td>操作1</td>
+          <td>操作2</td> 
+          <td>客户评价</td> 
+         <!--  <td>签名时间</td> 
+          <td>认证时间</td> 
+          <td>操作</td> 
+ -->         </tr>
+        </thead> 
+        <tbody> 
+         <tr ng-repeat="item in messages track by $index"> 
+          <td>{{item.name}}</td> 
+          <td>{{item.roomNum}}</td> 
+          <td>{{item.deposit}}</td> 
+          <td>{{item.date}}</td> 
+          <td>{{item.phoneNum}}</td>
+          <td><a href="" title="" ng-click="exit($index)">退房</a></td> 
+          <td><a href="" title="" ng-click="open($index)">换房</a></td>
+          <td><a href="" title="" ng-click="open2($index)">评价</a></td>
+         </tr> 
+        </tbody> 
+       </table> 
+     </div>
+     <div class="panel-footer">
+     <div class="row">
+       <div class="col-md-6">
+            <div class="input-group">
+      <input type="text" class="form-control" placeholder="按房间号查询">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button">确定</button>
+      </span>
+    </div>
+       </div>
+     </div>
+    
+     </div>
+      <!-- 弹出框模板 -->
+      <!-- 换房模板 -->
+     <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">换房信息填写</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+        <div class="container-fluid">
+           <form action="" class="form-inline">
+          <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="name">入住房号：</label>
+          <input type="text" class="form-control" id="roomNum" ng-model="data.oldRoom"></div>
+          <div class="col-md-6 form-group">
+            <label for="roomNum">更换房号：</label>
+            <input type="text" class="form-control" id="roomNum2" ng-model="data.newRoom"></div>
+        </div>
+        </form>
+        </div>  
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    <!-- 评价模板 -->
+    <script type="text/ng-template" id="myModalContent2.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">客人评价填写</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+        <div class="container-fluid">
+           <form action="" class="form-inline">
+          <div class="row">
+          <div class="col-md-6 form-group">
+            <label for="grade">请选择评分：</label>
+            <select class="form-control" id="grade" ng-model="data.grade" ng-options="x for x in grades">
+            </select>
+        </div>
+        </form>
+        </div>  
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    <!-- 退房弹出框 -->
+    <script type="text/ng-template" id="myModalContent3.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">请确认该客户是否退房</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+        <ul>
+          <li>客户姓名: {{items.name}}</li>
+          <li>入住房号: {{items.roomNum}}</li>
+          <li>押金: {{items.deposit}}</li>
+        </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">Yes</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>
+
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css"></head>
+<body ng-app="login" ng-controller="loginCtrl">
+	<header>
+		<h2>酒店信息管理系统</h2>
+		<img src="pic/hotel.png" alt="">
+	</header>
+	<div id="login">
+		<div id="login-header">
+			<h4>管理员登录</h4>
+		</div>
+		<div id="login-main">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control" id="id" placeholder="管理员账号" ng-model="user"></div>
+				<div class="form-group">
+					<input type="password" class="form-control" id="password" placeholder="请输入密码" ng-model="password"></div>
+				<div id="register">
+					<a href="./register.html" title="">管理员账号注册</a>
+				</div>
+				<button type="submit" class="btn btn-default" ng-click="login()">登 录</button>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<div>copyright © 2013-2017 13cs-7 范展宁</div>
+	</footer>
+
+ <script type="text/javascript" src="./js/lib/angular.js"></script>
+<script type="text/javascript" src="./js/controllers/loginCtrl.js"></script> 
+</body>
+</html>

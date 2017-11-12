@@ -1,0 +1,46 @@
+<form class="form-inline">
+	<div class="container-fluid" id="book" >
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h2 class="panel-title">客房预订登记</h2>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-6 form-group">
+						<label for="name">客人姓名：</label>
+						<input type="text" class="form-control" id="name" ng-model="msg.name">
+					</div>
+					<div class="col-md-6 form-group">
+						<label for="phoneNum">联系电话：</label>
+						<input type="text" class="form-control" id="phoneNum" ng-model="msg.phoneNum">
+					</div>
+				</div>
+				<div class="row">
+				<div class="col-md-6 form-group">
+					<label for="type">房间种类：</label>
+					<select class="form-control" id="type" ng-model="msg.type" ng-options="x for x in types">
+					</select>
+				</div>
+					<div class="col-md-6 form-group">
+						<label for="date">预订时间：</label>
+						<p class="input-group">
+						<input type="text" class="form-control" id="date" uib-datepicker-popup ng-model="msg.date" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" >
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="open2()"> <i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+					
+				</div>
+				
+			</div>
+			</div>
+		<div class="panel-footer">
+			<input type="submit" name="" value="确认预订" class="btn btn-primary" ng-click="book()">
+			<input type="reset" name="" value="重置信息" class="btn btn-primary">
+		</div>
+	
+	</div>
+</div>
+
+</form>

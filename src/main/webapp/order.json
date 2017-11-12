@@ -1,0 +1,5 @@
+[
+    {"name": "peter","type": "单人房","phoneNum": 123,"dt": "2017-4-29"},
+    {"name": "jay","type": "双人房","phoneNum": 123,"dt": "2017-4-29"},
+    {"name": "obama","type": "单人房","phoneNum": 1223,"dt": "2017-4-9"}
+]

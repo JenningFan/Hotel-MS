@@ -1,0 +1,59 @@
+<form class="form-inline">
+	<div class="container-fluid" id="checkIn">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h2 class="panel-title">入住信息登记</h2>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<label for="name">客人姓名：</label>
+						<input type="text" class="form-control" id="name" ng-model="msg.name"></div>
+					<div class="col-md-4 form-group">
+						<label for="roomNum">入住房号：</label>
+						<input type="text" class="form-control" id="roomNum" ng-model="msg.roomNum"></div>
+					<div class="col-md-4 form-group">
+						<label for="phoneNum">联系电话：</label>
+						<input type="text" class="form-control" id="phoneNum" ng-model="msg.phoneNum"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<label for="sex">客人性別：</label>
+						<select class="form-control" id="sex" ng-model="msg.sex" ng-options="x for x in sexes">
+						</select>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="type">房间种类：</label>
+						<select class="form-control" id="type" ng-model="msg.type"
+						ng-options="x for x in types">
+						</select>
+					</div>
+					<div class="col-md-4 form-group">
+						<label for="idNum">身份证号：</label>
+						<input type="text" class="form-control" id="idNum" ng-model="msg.idNum"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 form-group">
+						<label for="charge">房间费用：</label>
+						<input type="text" class="form-control" id="charge" ng-model="msg.charge"></div>
+					<div class="col-md-4 form-group">
+						<label for="deposit">房间押金：</label>
+						<input type="text" class="form-control" id="deposit" ng-model="msg.deposit"></div>
+					<div class="col-md-4 form-group ">
+						<label for="date">入住日期：</label>
+						<p class="input-group">
+						<input type="text" class="form-control" id="date" uib-datepicker-popup ng-model="msg.date" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" >
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="open2()"> <i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<input type="submit" name="" value="提交信息" class="btn btn-primary" ng-click="checkIn()">
+				<input type="reset" name="" value="重置信息" class="btn btn-primary"></div>
+		</div>
+	</div>
+</form>

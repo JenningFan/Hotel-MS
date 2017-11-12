@@ -1,0 +1,98 @@
+html{
+	height: 100%;
+
+}
+@font-face{
+	font-family: HYLiangPinXianCuJ;
+	src: url(../fonts/HYLiangPinXianCuJ.ttf);
+}
+body{
+	background-image: url(../pic/background.jpg);
+	background-repeat: no-repeat;
+	/*display: flex;
+	flex-direction: column;*/
+	/*height: 100%;*/
+	margin: 0;
+	padding: 0;
+}
+header{
+	margin-left: 5%;
+	margin-top: 3%;
+	/*flex: 0 0 auto;*/
+}
+header h2{
+	color: white;
+	font-weight: bold;
+	font-family: HYLiangPinXianCuJ;		
+}
+#login{
+	/*flex: 1 0 auto;*/
+	width: 350px;
+	height: 290px;
+	/*width: 30%;
+	height: 45%;*/
+	background-color: white;
+	opacity: 0.91;
+	margin-left: 60%;
+	margin-top:100px;
+	border-radius: 5px;
+}
+#login #login-header h4{
+	text-align: center;
+	color: #6731A9;
+	font-weight: bold;
+	margin-top: 20px; 
+}
+#login-main .form-control{
+	width: 70%;
+	margin: 0 auto;
+}
+#login-main .btn{
+	display: block;
+	margin: 20px auto;
+	width: 70%;
+	color: white;
+	font-weight: bold;
+	background-color: #6731A9;
+	/*background-color: #9842B1;*/
+}
+#login #login-header{
+	padding: 20px;
+
+}
+#login #register {
+	margin: 5px 200px;
+	width: 110px;
+/*	border: 1px solid black;*/
+}
+#register a{
+	color: #6731A9;
+}
+
+footer{
+	/*flex 0 0 auto;*/
+	text-align: center;
+	color: white;
+	font-size: 16px;
+	margin-top: 105px;
+}
+
+/*footer{
+	color: white;
+	position: absolute;
+	bottom: 2%;
+	font-size: 16px;
+	width: 100%;
+}*/
+/*footer div{
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 240px;
+    width: 70%;
+    text-align: center;
+}*/
+
